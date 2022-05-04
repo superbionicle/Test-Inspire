@@ -5,7 +5,6 @@
 //  Created by Arthur on 04/05/2022.
 //
 
-#include <iostream>
 
 /*
  
@@ -71,18 +70,18 @@
  
 */
 
+#include <iostream>
+#include <vector>
+#include "carte.hpp"
+#include "thème.hpp"
+#include "menus.hpp"
+
 using namespace std;
 
-void affichage(){
-    cout<<"1. Jouer une partie scorée (tout thème confondu)"<<endl;
-    cout<<"2. Faire une partie de révision selon un thème"<<endl;
-    cout<<"3. Ajouter/Retirer un thème"<<endl;
-    cout<<"4. Ajouter/Modifier/Retirer une carte"<<endl;
-    cout<<"5. Voir les high-scores"<<endl;
-    cout<<"0. Quitter (vous pouvez aussi appuyer sur Echap pour quitter"<<endl;
-}
 
 int main(){
+    vector<carte> liste_cartes;
+    vector<theme> liste_theme;
     int choix_menu=0;
     do{
         affichage();
@@ -94,41 +93,34 @@ int main(){
             }
                 break;
             case 2:{
-                int choix_2=0;
-                do{
-                    cout<<"Que voulez vous faire ?"<<endl;
-                    cout<<"1. Choisir un thème"<<endl;
-                    cout<<"0. Retour au menu précédent"<<endl;
-                    cout<<"Votre choix : ";
-                    cin>>choix_2;
-                }while(choix_2!=0);
+                int choix_2=menu_training();
                 cout<<"WIP Training"<<endl;
             }
                 break;
             case 3:{
-                int choix_3=0;
-                do{
-                    cout<<"Que voulez vous faire ?"<<endl;
-                    cout<<"1. Ajouter un thème"<<endl;
-                    cout<<"2. Retirer un thème"<<endl;
-                    cout<<"0. Retour au menu précédent"<<endl;
-                    cout<<"Votre choix : ";
-                    cin>>choix_3;
-                }while(choix_3!=0);
+                int choix_3=menu_theme();
                 cout<<"WIP Ajout/Retrait thème"<<endl;
             }
                 break;
             case 4:{
-                int choix_4=0;
-                do{
-                    cout<<"Que voulez vous faire ?"<<endl;
-                    cout<<"1. Ajouter une carte à un thème"<<endl;
-                    cout<<"2. Modifier une carte d'un thème"<<endl;
-                    cout<<"3. Retirer une carte d'un thème"<<endl;
-                    cout<<"0. Retour au menu précédent"<<endl;
-                    cout<<"Votre choix : ";
-                    cin>>choix_4;
-                }while(choix_4!=0);
+                int choix_4=menu_carte();
+                switch (choix_4) {
+                    case 1:{
+                        carte carte_temp;
+                        cout<<"Saisir le thème de la carte : ";
+                        string theme;
+                        cin>>theme;
+                        carte_temp.set_theme(theme);
+                        carte_temp.set_question();
+                        carte_temp.set_reponses();
+                        liste_cartes.push_back(carte_temp);
+                        
+                    }
+                        break;
+                        
+                    default:
+                        break;
+                }
                 cout<<"WIP Ajout/Modif/Retrait cartes"<<endl;
             }
                 break;

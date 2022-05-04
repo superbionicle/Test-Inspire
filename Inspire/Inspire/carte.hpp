@@ -24,6 +24,7 @@ public:
     ~carte();
     void set_theme(string nom_theme){theme_carte=nom_theme;};
     void set_question(string question_a_donner){question=question_a_donner;};
+    void set_question();
     void set_reponses();
     bool lancer_question();
 };

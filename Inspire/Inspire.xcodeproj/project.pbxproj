@@ -10,6 +10,7 @@
 		8E7C89FF28230AD60064A6AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C89FE28230AD60064A6AD /* main.cpp */; };
 		8E7C8A08282314260064A6AD /* carte.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A06282314260064A6AD /* carte.cpp */; };
 		8E7C8A0C282314300064A6AD /* thème.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A0A282314300064A6AD /* thème.cpp */; };
+		8E7C8A10282323F00064A6AD /* menus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A0E282323F00064A6AD /* menus.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,8 @@
 		8E7C8A07282314260064A6AD /* carte.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carte.hpp; sourceTree = "<group>"; };
 		8E7C8A0A282314300064A6AD /* thème.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "thème.cpp"; sourceTree = "<group>"; };
 		8E7C8A0B282314300064A6AD /* thème.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "thème.hpp"; sourceTree = "<group>"; };
+		8E7C8A0E282323F00064A6AD /* menus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = menus.cpp; sourceTree = "<group>"; };
+		8E7C8A0F282323F00064A6AD /* menus.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = menus.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				8E7C89FE28230AD60064A6AD /* main.cpp */,
+				8E7C8A0E282323F00064A6AD /* menus.cpp */,
+				8E7C8A0F282323F00064A6AD /* menus.hpp */,
 				8E7C8A06282314260064A6AD /* carte.cpp */,
 				8E7C8A0A282314300064A6AD /* thème.cpp */,
 				8E7C8A0B282314300064A6AD /* thème.hpp */,
@@ -130,6 +135,7 @@
 			files = (
 				8E7C89FF28230AD60064A6AD /* main.cpp in Sources */,
 				8E7C8A0C282314300064A6AD /* thème.cpp in Sources */,
+				8E7C8A10282323F00064A6AD /* menus.cpp in Sources */,
 				8E7C8A08282314260064A6AD /* carte.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

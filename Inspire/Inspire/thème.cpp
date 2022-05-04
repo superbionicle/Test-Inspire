@@ -6,3 +6,11 @@
 //
 
 #include "thème.hpp"
+
+theme::theme(){
+    
+}
+
+theme::~theme(){
+    
+}
