@@ -9,7 +9,7 @@
 
 /*
  
-Attentes du client :
+ Attentes du client :
  Faire un jeu quizz avec des cartes
  Chaque carte aura :
     - un thème
@@ -29,6 +29,9 @@ Attentes du client :
     - faire un menu des high scores
         écriture et lecture d'un fichier des scores
         format : txt ? (classement ... nom ...... score)
+ 
+ Remarque : trouver le moyen de clear la console terminal pour avoir un affichage propre à chaque fois qu'on se balade dans les menus
+ Bonus : essayer de mettre en place un chrono en arrière plan et donner le temps à la fin d'une session de jeu
  
  Conception de la structure :
  Menu :
@@ -60,8 +63,59 @@ Attentes du client :
     5. Créer un nouveau thème pour le deck
     0. Quitter (Echap pour quitter)
  
+ Etapes :
+    1. Faire le menu
+    2. Créer les classes "Carte" et "Thème"
+    3. Faire les options du menu pour ajouter cartes et thèmes
+    4. Trouver la manière de faire de l'écriture et de la lecture de fichier pour enregistrer des données
+ 
 */
 
+using namespace std;
+
+void affichage(){
+    cout<<"1. Jouer une partie scorée (tout thème confondu)"<<endl;
+    cout<<"2. Faire une partie de révision selon un thème"<<endl;
+    cout<<"3. Ajouter/Retirer un thème"<<endl;
+    cout<<"4. Ajouter/Modifier/Retirer une carte"<<endl;
+    cout<<"5. Voir les high-scores"<<endl;
+    cout<<"0. Quitter (vous pouvez aussi appuyer sur Echap pour quitter"<<endl;
+}
+
 int main(){
-    return 0;
+    int choix_menu=0;
+    do{
+        affichage();
+        cout<<"Votre choix : ";
+        cin>>choix_menu;
+        switch(choix_menu){
+            case 1:{
+                cout<<"WIP Ranked"<<endl;
+            }
+                break;
+            case 2:{
+                cout<<"WIP Training"<<endl;
+            }
+                break;
+            case 3:{
+                cout<<"WIP Ajout/Retrait thème"<<endl;
+            }
+            case 4:{
+                cout<<"WIP Ajout/Modif/Retrait cartes"<<endl;
+            }
+                break;
+            case 5:{
+                cout<<"WIP High-scores"<<endl;
+            }
+                break;
+            case 0:{
+                cout<<"Merci et à bientot avec Learn Fast.exe"<<endl;
+            }
+                break;
+            default:
+                cout<<"Mauvaise entrée"<<endl;
+            
+        }
+    }while(choix_menu!=0);
+    return(0);
 }
