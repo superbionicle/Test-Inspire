@@ -94,13 +94,41 @@ int main(){
             }
                 break;
             case 2:{
+                int choix_2=0;
+                do{
+                    cout<<"Que voulez vous faire ?"<<endl;
+                    cout<<"1. Choisir un thème"<<endl;
+                    cout<<"0. Retour au menu précédent"<<endl;
+                    cout<<"Votre choix : ";
+                    cin>>choix_2;
+                }while(choix_2!=0);
                 cout<<"WIP Training"<<endl;
             }
                 break;
             case 3:{
+                int choix_3=0;
+                do{
+                    cout<<"Que voulez vous faire ?"<<endl;
+                    cout<<"1. Ajouter un thème"<<endl;
+                    cout<<"2. Retirer un thème"<<endl;
+                    cout<<"0. Retour au menu précédent"<<endl;
+                    cout<<"Votre choix : ";
+                    cin>>choix_3;
+                }while(choix_3!=0);
                 cout<<"WIP Ajout/Retrait thème"<<endl;
             }
+                break;
             case 4:{
+                int choix_4=0;
+                do{
+                    cout<<"Que voulez vous faire ?"<<endl;
+                    cout<<"1. Ajouter une carte à un thème"<<endl;
+                    cout<<"2. Modifier une carte d'un thème"<<endl;
+                    cout<<"3. Retirer une carte d'un thème"<<endl;
+                    cout<<"0. Retour au menu précédent"<<endl;
+                    cout<<"Votre choix : ";
+                    cin>>choix_4;
+                }while(choix_4!=0);
                 cout<<"WIP Ajout/Modif/Retrait cartes"<<endl;
             }
                 break;
@@ -109,11 +137,11 @@ int main(){
             }
                 break;
             case 0:{
-                cout<<"Merci et à bientot avec Learn Fast.exe"<<endl;
+                cout<<"Merci et à bientot sur Inspire_Learn_Fast.exe"<<endl;
             }
                 break;
             default:
-                cout<<"Mauvaise entrée"<<endl;
+                cout<<"Mauvaise entrée, recommence batard"<<endl;
             
         }
     }while(choix_menu!=0);
