@@ -28,8 +28,37 @@ Attentes du client :
     - permettre de compter les points pour chaque manche gagner, les afficher au fur et à mesure de la partie
     - faire un menu des high scores
         écriture et lecture d'un fichier des scores
-        format : txt ? (nom ...... score)
+        format : txt ? (classement ... nom ...... score)
  
+ Conception de la structure :
+ Menu :
+    1. Jouer une partie (tout thème confondu)
+    2. Lancer une partie de révision
+        2.1. Choisir un thème
+        2.2 Retour au menu précédent
+    3. Ajouter, modifier ou retirer une carte
+        3.1. Ajouter une carte au deck
+            Choisir le thèe parmis ceux existant
+            Entrer la question
+            Est-ce une question vrai/faux ?
+            Si non, alors :
+                Entrer la bonne réponse
+                Choisir le nombre de mauvaises réponses
+                Entrer les mauvaises réponses
+            Ajouter une nouvelle carte ? oui/non
+            Si oui
+                On boucle
+            Si non
+                Retour au menu précédent
+            Bouton "Annuler" toujours précédent pendant l'ajout
+        3.2. Modifier une carte existante
+        3.3. Supprimer une carte existante
+        3.4. Retour au menu précédent
+    4. Voir les high scores
+        4.1. (Affichage des 10 meilleurs)
+        4.2. Retour au menu précédent
+    5. Créer un nouveau thème pour le deck
+    0. Quitter (Echap pour quitter)
  
 */
 
