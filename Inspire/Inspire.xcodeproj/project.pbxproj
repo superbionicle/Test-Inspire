@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8E7C89FF28230AD60064A6AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C89FE28230AD60064A6AD /* main.cpp */; };
+		8E7C8A08282314260064A6AD /* carte.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A06282314260064A6AD /* carte.cpp */; };
+		8E7C8A0C282314300064A6AD /* thème.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A0A282314300064A6AD /* thème.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		8E7C89FB28230AD60064A6AD /* Inspire */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Inspire; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7C89FE28230AD60064A6AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		8E7C8A06282314260064A6AD /* carte.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = carte.cpp; sourceTree = "<group>"; };
+		8E7C8A07282314260064A6AD /* carte.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = carte.hpp; sourceTree = "<group>"; };
+		8E7C8A0A282314300064A6AD /* thème.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "thème.cpp"; sourceTree = "<group>"; };
+		8E7C8A0B282314300064A6AD /* thème.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "thème.hpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				8E7C89FE28230AD60064A6AD /* main.cpp */,
+				8E7C8A06282314260064A6AD /* carte.cpp */,
+				8E7C8A0A282314300064A6AD /* thème.cpp */,
+				8E7C8A0B282314300064A6AD /* thème.hpp */,
+				8E7C8A07282314260064A6AD /* carte.hpp */,
 			);
 			path = Inspire;
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E7C89FF28230AD60064A6AD /* main.cpp in Sources */,
+				8E7C8A0C282314300064A6AD /* thème.cpp in Sources */,
+				8E7C8A08282314260064A6AD /* carte.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
