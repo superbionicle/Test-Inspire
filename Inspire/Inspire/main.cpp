@@ -6,15 +6,21 @@
 //
 
 #include <iostream>
+#include <fstream>
 #include <vector>
-#include "carte.hpp"
-#include "thème.hpp"
-#include "menus.hpp"
+#include "scores.hpp"
+#include "lecture ecriture.hpp"
 
 using namespace std;
 
 
 int main(){
+    string const nom("scores.txt"); // on récupère le nom du fichier .txt
+    highscores tab=init(nom);
+    ecriture(nom, tab);
+    affichage_contenu(nom);
+    tab.display_contenu(); // on vérifie la cohérence avec ce qui a été écrit dans le .txt
+    
     
     vector<carte> liste_cartes;
     vector<theme> liste_theme;
