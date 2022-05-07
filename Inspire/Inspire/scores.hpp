@@ -14,17 +14,19 @@
 using namespace std;
 
 class highscores{
-    int taille=10;
+    int taille;
     vector<string> pseudos;
     vector<int> scores;
 public:
-    highscores();
+    highscores(vector<string> users,vector<int>scores_users,int taille_user=10);
+    highscores(int taille_user=10);
     ~highscores();
+    void display_contenu();
     void insertion(string pseudo,int score);
     void changer_taille(int new_taille){taille=new_taille;}
     void fin_partie(string pseudo,int score);
-    vector<string> get_pseudos(){return(pseudos);}
-    vector<int> get_scores(){return(scores);}
+    string* get_pseudos();
+    int* get_scores();
 };
 
 #endif /* scores_hpp */
