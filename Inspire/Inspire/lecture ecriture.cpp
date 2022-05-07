@@ -11,7 +11,7 @@
 #include <vector>
 #include "scores.hpp"
 
-void recuperation(string nom,highscores score){ // on sauvegarde les données dans le .txt
+void ecriture(string nom,highscores score){ // on sauvegarde les données dans le .txt
     int* scores=score.get_scores(); // on récupère les scores de notre classe
     string* pseudos=score.get_pseudos(); // on récupère les pseudos de notre classe
     int taille=score.get_taille(); // on récupère le nb de highscores à garder
@@ -72,26 +72,24 @@ void affichage_contenu(string nom){
     else{ // s'il y a eu un problème
         cout<<"Erreur d'ouverture du fichier"<<endl;
     }
+    cout<<endl;
     lecture.close(); // on ferme le fichier
 }
 
 highscores init(string nom){
-    vector<string> pseudos=lecture_pseudos(nom);
-    vector<int> scores=lecture_scores(nom);
-    bool vide=false;
-    for(int i=0;i<pseudos.size();i++){
-        if(pseudos[i]==""){
-            vide=true;
-        }
-    }
-    if(vide){
-        cout<<"Le fichier est vide : remplissage du fichier"<<endl;
-        highscores score;
+    ofstream open(nom.c_str()); // on ouvre une premiere fois le fichier pour le créer éventuellement
+    open.close(); // on le ferme directement
+    vector<string> pseudos=lecture_pseudos(nom); // on récupère les valeurs des pseudos
+    vector<int> scores=lecture_scores(nom); // on récupère les valeurs des scores
+    int vide=scores.size(); // on récupère la taille des vecteurs (ils ont meme taille)
+    if(vide==0){ // si c'est égal à 0, alors le fichier est vide
+        //cout<<"Le fichier est vide : remplissage du fichier"<<endl;
+        highscores score; // on initialise une classe de scores par défaut (cf le constructeur)
         return(score);
     }
-    else{
-        cout<<"Le fichier n'est pas vide"<<endl;
-        highscores score(pseudos,scores,scores.size());
+    else{ // sinon, le fichier n'est pas vide et on a récupéré des infos existantes
+        //cout<<"Le fichier n'est pas vide"<<endl;
+        highscores score(pseudos,scores,scores.size()); // on attribut des valeurs à la classe de scores
         return(score);
     }
 }
