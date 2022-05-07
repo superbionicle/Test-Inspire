@@ -12,7 +12,12 @@
 using namespace std;
 
 
-int main(){    
+int main(){
+    
+    string const nom("/scores.txt");
+    ofstream score(nom.c_str());
+    score.close();
+    
     highscores tab;
     tab.fin_partie("Arthur", 100);
     return(0);
