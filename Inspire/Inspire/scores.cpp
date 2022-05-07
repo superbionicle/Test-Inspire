@@ -60,6 +60,7 @@ void highscores::display_contenu(){
     for(int i=0;i<taille;i++){
         cout<<"n°"<<i+1<<". \t"<<pseudos_temp[i]<<" | Score : "<<scores_temp[i]<<endl;
     }
+    cout<<endl;
 }
 
 

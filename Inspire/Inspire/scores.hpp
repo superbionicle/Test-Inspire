@@ -27,6 +27,7 @@ public:
     void fin_partie(string pseudo,int score);
     string* get_pseudos();
     int* get_scores();
+    int get_taille(){return(taille);}
 };
 
 #endif /* scores_hpp */
