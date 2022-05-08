@@ -12,6 +12,8 @@
 #include <fstream>
 #include <vector>
 #include "scores.hpp"
+#include "carte.hpp"
+#include "thème.hpp"
 
 void ecriture(string nom,highscores score);
 vector<string> lecture_pseudos(string nom);

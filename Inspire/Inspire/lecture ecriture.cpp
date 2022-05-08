@@ -10,6 +10,8 @@
 #include <fstream>
 #include <vector>
 #include "scores.hpp"
+#include "carte.hpp"
+#include "thème.hpp"
 
 void ecriture(string nom,highscores score){ // on sauvegarde les données dans le .txt
     int* scores=score.get_scores(); // on récupère les scores de notre classe
