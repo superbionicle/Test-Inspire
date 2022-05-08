@@ -22,12 +22,17 @@ using namespace std;
 
 
 int main(){
-    string const nom("scores.txt"); // on récupère le nom du fichier .txt des scores
+    string const nom("scores.txt"); // on récupère le nom du fichier .txt
+    highscores tab=init(nom);
+    ecriture(nom, tab);
+    affichage_contenu(nom);
+    tab.display_contenu(); // on vérifie la cohérence avec ce qui a été écrit dans le .txt
+    /*string const nom("scores.txt"); // on récupère le nom du fichier .txt des scores
     highscores tab=init(nom); // on initialise le fichier des scores
     // soit on récupère les données qui existe déjà
     // soit on crée un fichier vide et on initialise le tableau des scores
     string const nom_theme("themes_question.txt"),nom_question("questions.txt"),nom_nb("nb_rep.txt"),nom_rep("rep.txt");
-    vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);
+    vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);*/
     //vector<theme> liste_theme;
     /*int choix_menu=0;
     do{
