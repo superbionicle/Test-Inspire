@@ -87,17 +87,25 @@ vector<int> lecture_scores(string nom){ // on récupère les scores du .txt
 
 highscores init(string nom){
     ofstream open(nom.c_str()); // on ouvre une premiere fois le fichier pour le créer éventuellement
+    if(open){
+        cout<<"Présence du fichier confirmée"<<endl;
+    }
+    else{
+        cout<<"Erreur avec le fichier"<<endl;
+    }
     open.close(); // on le ferme directement
     vector<string> pseudos=lecture_pseudos(nom); // on récupère les valeurs des pseudos
     vector<int> scores=lecture_scores(nom); // on récupère les valeurs des scores
     int vide=scores.size(); // on récupère la taille des vecteurs (ils ont meme taille)
+    cout<<"scores.size() = "<<vide<<endl;
     if(vide==0){ // si c'est égal à 0, alors le fichier est vide
-        //cout<<"Le fichier est vide : remplissage du fichier"<<endl;
+        cout<<"Le fichier est vide : remplissage du fichier"<<endl;
         highscores score; // on initialise une classe de scores par défaut (cf le constructeur)
+        ecriture(nom, score);
         return(score);
     }
     else{ // sinon, le fichier n'est pas vide et on a récupéré des infos existantes
-        //cout<<"Le fichier n'est pas vide"<<endl;
+        cout<<"Le fichier n'est pas vide"<<endl;
         highscores score(pseudos,scores,scores.size()); // on attribut des valeurs à la classe de scores
         return(score);
     }

@@ -29,7 +29,7 @@ int main(){
     string const nom_theme("themes_question.txt"),nom_question("questions.txt"),nom_nb("nb_rep.txt"),nom_rep("rep.txt");
     vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);
     //vector<theme> liste_theme;
-    int choix_menu=0;
+    /*int choix_menu=0;
     do{
         affichage();
         cout<<"Votre choix : ";
@@ -90,6 +90,6 @@ int main(){
                 cout<<"Mauvaise entrée, recommencez."<<endl;
             
         }
-    }while(choix_menu!=0);
+    }while(choix_menu!=0);*/
     return(0);
 }
