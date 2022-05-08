@@ -26,29 +26,9 @@ int main(){
     highscores tab=init(nom); // on initialise le fichier des scores
     // soit on récupère les données qui existe déjà
     // soit on crée un fichier vide et on initialise le tableau des scores
-    
-    
     string const nom_theme("themes_question.txt"),nom_question("questions.txt"),nom_nb("nb_rep.txt"),nom_rep("rep.txt");
-        
-        /*carte test;
-        test.set_theme("test");
-        test.set_question("Pouet");
-        test.set_reponses();
-        
-        vector<carte> ensemble_test;
-        ensemble_test.push_back(test);
-        
-        ecriture(nom_theme, nom_question, nom_nb, nom_rep, ensemble_test);*/
-        
-        vector<carte> lecture;
-        lecture=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);
-        for(int i=0;i<lecture.size();i++){
-            lecture[i].display();
-        }
-    
-    
-    vector<carte> liste_cartes;
-    vector<theme> liste_theme;
+    vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);
+    //vector<theme> liste_theme;
     int choix_menu=0;
     do{
         affichage();
@@ -60,39 +40,46 @@ int main(){
             }
                 break;
             case 2:{
-                //int choix_2=menu_training();
                 cout<<"WIP Training"<<endl;
             }
                 break;
             case 3:{
-                //int choix_3=menu_theme();
                 cout<<"WIP Ajout/Retrait thème"<<endl;
             }
                 break;
             case 4:{
-                /*int choix_4=menu_carte();
-                switch (choix_4) {
-                    case 1:{
-                        carte carte_temp;
-                        cout<<"Saisir le thème de la carte : ";
-                        string theme;
-                        cin>>theme;
-                        carte_temp.set_theme(theme);
-                        carte_temp.set_question();
-                        carte_temp.set_reponses();
-                        liste_cartes.push_back(carte_temp);
-                        
-                    }
-                        break;
-                        
-                    default:
-                        break;
-                }*/
-                cout<<"WIP Ajout/Modif/Retrait cartes"<<endl;
+                for(int i=0;i<liste_cartes.size();i++){
+                    liste_cartes[i].display();
+                }
+                vector<carte> ensemble_temp;
+                int rep=0;
+                do{
+                    carte carte_temp;
+                    cout<<"Ajouter une carte : "<<endl;
+                    cout<<"Quel thème pour la carte : ";
+                    string theme;
+                    cin>>theme;
+                    carte_temp.set_theme(theme);
+                    carte_temp.set_question();
+                    carte_temp.set_reponses();
+                    ensemble_temp.push_back(carte_temp);
+                    cout<<"Que voulez vous faire ?"<<endl;
+                    cout<<"Entrez 0 si vous avez fini d'ajouter des cartes"<<endl;
+                    cout<<"Entrez un autre chiffre si vous voulez continuez à en ajouter"<<endl;
+                    cout<<"Votre choix : ";
+                    cin>>rep;
+                }while(rep!=0);
+                for(int i=0;i<liste_cartes.size();i++){
+                    cout<<"Contenu ajouté : "<<endl;
+                    ensemble_temp[i].display();
+                    cout<<endl;
+                }
+                ecriture(nom_theme,nom_question, nom_nb, nom_rep, ensemble_temp);
+                //cout<<"WIP Ajout cartes"<<endl;
             }
                 break;
             case 5:{
-                cout<<"WIP High-scores"<<endl;
+                tab.display_contenu(); // on affiche les highscores
             }
                 break;
             case 0:{

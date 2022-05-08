@@ -184,8 +184,6 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
         cout<<"Erreur lors de l'ouverture du fichier pour la lecture des questions des cartes"<<endl;
     }
     
-    
-    
     ifstream lecture_question(nom_question.c_str()); // reconstruction de l'ensemble des questions
     if(lecture_question){
         string line;
@@ -197,8 +195,6 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
         cout<<"Erreur lors de l'ouverture du fichier pour la lecture des questions des cartes"<<endl;
     }
     
-    
-    
     ifstream lecture_nb(nom_nb.c_str()); // recontruction de l'ensemble des nb de rep
     if(lecture_nb){
         int line;
@@ -209,8 +205,6 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     else{
         cout<<"Erreur lors de l'ouverture du fichier pour la lecture du nb de réponses aux questions des cartes"<<endl;
     }
-    
-    
     
     ifstream lecture_rep(nom_rep.c_str()); // reconstructuon de l'ensemble des réponses
     if(lecture_rep){
@@ -224,27 +218,21 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     }
     
     int cumul_rep=0;
-    
-    if( lecture_nb && lecture_rep && lecture_theme && lecture_question){ // si on a reussi à ouvrir les 4 fichiers
-        for(int i=0;i<nb_theme.size();i++){
-            //cout<<"Nombre de réponses : "<<nb_rep[i]<<endl;
-            carte carte_temp;
-            //cumul_rep+=nb_rep[i];
-            carte_temp.set_theme(nb_theme[i]);
-            carte_temp.set_question(questions[i]);
-            vector<string> rep_temp;
-            for(int j=0;j<nb_rep[i];j++){
-                //cout<<"Entrée"<<endl;
-                rep_temp.push_back(rep[i+j+cumul_rep]);
-                //cout<<rep[i+j+cumul_rep]<<endl;
-            }
-            cumul_rep+=nb_rep[i]-1;
-            carte_temp.set_reponses(nb_rep[i],rep_temp);
-            cartes_temp.push_back(carte_temp);
+    for(int i=0;i<nb_theme.size();i++){
+        //cout<<"Nombre de réponses : "<<nb_rep[i]<<endl;
+        carte carte_temp;
+        //cumul_rep+=nb_rep[i];
+        carte_temp.set_theme(nb_theme[i]);
+        carte_temp.set_question(questions[i]);
+        vector<string> rep_temp;
+        for(int j=0;j<nb_rep[i];j++){
+            //cout<<"Entrée"<<endl;
+            rep_temp.push_back(rep[i+j+cumul_rep]);
+            //cout<<rep[i+j+cumul_rep]<<endl;
         }
-    }
-    else{
-        cout<<"Erreur lors de l'ouverture du fichier : Impossible de sauvegarder"<<endl;
+        cumul_rep+=nb_rep[i]-1;
+        carte_temp.set_reponses(nb_rep[i],rep_temp);
+        cartes_temp.push_back(carte_temp);
     }
     
     lecture_theme.close(); // fermeture du fichier

@@ -21,7 +21,7 @@ void affichage(){
     cout<<"3. Ajouter/Retirer un thème"<<endl;
     cout<<"4. Ajouter/Modifier/Retirer une carte"<<endl;
     cout<<"5. Voir les high-scores"<<endl;
-    cout<<"0. Quitter (vous pouvez aussi appuyer sur Echap pour quitter"<<endl;
+    cout<<"0. Quitter (vous pouvez aussi appuyer sur Echap pour quitter)"<<endl;
 }
 
 int menu_ranked(){
