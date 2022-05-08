@@ -86,11 +86,11 @@
 				8E2724DE2827F67F00BF09F4 /* fonctions theme.hpp */,
 				8E9D5B4A2826943F00DD5083 /* scores.cpp */,
 				8E9D5B4B2826943F00DD5083 /* scores.hpp */,
-				8E9D5B552826BE1000DD5083 /* objectifs.cpp */,
 				8E7C8A0E282323F00064A6AD /* menus.cpp */,
 				8E7C8A0F282323F00064A6AD /* menus.hpp */,
 				8E7C8A06282314260064A6AD /* carte.cpp */,
 				8E7C8A07282314260064A6AD /* carte.hpp */,
+				8E9D5B552826BE1000DD5083 /* objectifs.cpp */,
 			);
 			path = Inspire;
 			sourceTree = "<group>";
