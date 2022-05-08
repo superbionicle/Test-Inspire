@@ -41,15 +41,31 @@ void affichage_contenu(string nom){
 
 // Fonctions écriture/lecture scores
 
-void ecriture(string nom,highscores score){ // on sauvegarde les données dans le .txt
+
+
+
+void ecriture_scores(string nom,highscores score){ // on sauvegarde les données dans le .txt
     int* scores=score.get_scores(); // on récupère les scores de notre classe
-    string* pseudos=score.get_pseudos(); // on récupère les pseudos de notre classe
     int taille=score.get_taille(); // on récupère le nb de highscores à garder
-    
     ofstream txt(nom.c_str()); // on ouvre le fichier en écriture, mode écrasement
     if(txt){ // si l'ouverture s'est bien passée
         for(int i=0;i<taille;i++){ // on copie les valeurs dans le .txt
-            txt<<pseudos[i]<<" "<<scores[i]<<endl; // on écrit les couples (pseudo,score) dans le .txt
+            txt<<scores[i]<<endl; // on écrit les scores dans le .txt
+        }
+    }
+    else{ // s'il y a eu un problème
+        cout<<"Erreur lors de l'ouverture du fichier pour l'écriture des highscores"<<endl;
+    }
+    txt.close(); // on ferme le fichier
+}
+
+void ecriture_pseudos(string nom,highscores score){
+    string* pseudos=score.get_pseudos(); // on récupère les pseudos de notre classe
+    int taille=score.get_taille(); // on récupère le nb de highscores à garder
+    ofstream txt(nom.c_str()); // on ouvre le fichier en écriture, mode écrasement
+    if(txt){ // si l'ouverture s'est bien passée
+        for(int i=0;i<taille;i++){ // on copie les valeurs dans le .txt
+            txt<<pseudos[i]<<endl; // on écrit les pseudos dans le .txt
         }
     }
     else{ // s'il y a eu un problème
@@ -65,7 +81,7 @@ vector<string> lecture_pseudos(string nom){ // on récupère les pseudos du .txt
         cout<<"Ouverture lecture pseudos ok"<<endl;
         string pseudo_user;
         while(lecture>>pseudo_user){ //on récupère les scores
-            cout<<"Ajout de "<<pseudo_user<<endl;
+            //cout<<"Ajout de "<<pseudo_user<<endl;
             pseudos_temp.push_back(pseudo_user);
         }
     }
@@ -83,7 +99,7 @@ vector<int> lecture_scores(string nom){ // on récupère les scores du .txt
         cout<<"Ouverture lecture score ok"<<endl;
         int score_user;
         while(lecture>>score_user){ // on récupère les pseudos
-            cout<<"Ajout du score "<<score_user;
+            //cout<<"Ajout du score "<<score_user<<endl;
             scores_temp.push_back(score_user);
         }
         
@@ -95,29 +111,39 @@ vector<int> lecture_scores(string nom){ // on récupère les scores du .txt
     return(scores_temp);
 }
 
-highscores init(string nom){
-    ofstream open(nom.c_str()); // on ouvre une premiere fois le fichier pour le créer éventuellement
-    if(open){
-        cout<<"Présence du fichier confirmée"<<endl;
+highscores init(string nom_scores,string nom_pseudos){
+    ofstream open_scores(nom_scores.c_str(),ios::app); // on ouvre une premiere fois le fichier pour le créer éventuellement
+    if(open_scores){
+        cout<<"Présence du fichier scores confirmée"<<endl;
+        //affichage_contenu(nom_scores);
     }
     else{
-        cout<<"Erreur avec le fichier"<<endl;
+        cout<<"Erreur avec le fichier scores"<<endl;
     }
-    open.close(); // on le ferme directement
-    vector<string> pseudos=lecture_pseudos(nom); // on récupère les valeurs des pseudos
+    open_scores.close(); // on le ferme directement
+    ofstream open_pseudos(nom_pseudos.c_str(),ios::app);
+    if(open_pseudos){
+        cout<<"Présence du fichier pseudos confirmée"<<endl;
+        //affichage_contenu(nom_pseudos);
+    }
+    else{
+        cout<<"Erreur avec le fichier pseudos"<<endl;
+    }
+    vector<string> pseudos=lecture_pseudos(nom_pseudos); // on récupère les valeurs des pseudos
     for(int i=0;i<pseudos.size();i++){
-        cout<<"Pseudo n°"<<i+1<<" : "<<pseudos[i]<<endl;
+        //cout<<"Pseudo n°"<<i+1<<" : "<<pseudos[i]<<endl;
     }
-    vector<int> scores=lecture_scores(nom); // on récupère les valeurs des scores
+    vector<int> scores=lecture_scores(nom_scores); // on récupère les valeurs des scores
     for(int i=0;i<scores.size();i++){
-        cout<<"Score n°"<<i+1<<" : "<<pseudos[i]<<endl;
+        //cout<<"Score n°"<<i+1<<" : "<<pseudos[i]<<endl;
     }
     int vide=scores.size(); // on récupère la taille des vecteurs (ils ont meme taille)
-    cout<<"scores.size() = "<<vide<<endl;
+    //cout<<"scores.size() = "<<vide<<endl;
     if(vide==0){ // si c'est égal à 0, alors le fichier est vide
         cout<<"Le fichier est vide : remplissage du fichier"<<endl;
         highscores score; // on initialise une classe de scores par défaut (cf le constructeur)
-        ecriture(nom, score);
+        ecriture_pseudos(nom_pseudos, score);
+        ecriture_scores(nom_scores, score);
         return(score);
     }
     else{ // sinon, le fichier n'est pas vide et on a récupéré des infos existantes

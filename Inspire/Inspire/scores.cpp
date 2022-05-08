@@ -61,7 +61,7 @@ void highscores::display_contenu(){ // on affiche le contenu des highscores
 }
 
 
-void highscores::fin_partie(string pseudo,int score,string nom){ // on arrive en fin de partie
+void highscores::fin_partie(string pseudo,int score,string nom_pseudos,string nom_scores){ // on arrive en fin de partie
     // Test pour rentrer dans le highscore
     bool rentre=false;
     for(int i=0;i<taille;i++){ // on parcourt tous les scores du highscores
@@ -80,7 +80,6 @@ void highscores::fin_partie(string pseudo,int score,string nom){ // on arrive en
     }
     cout<<endl<<"....................................................................."<<endl<<endl;
     display_contenu(); // on affiche le contenu des highscores
-    ecriture(nom, score); // on écrit dans le fichier des scores pour sauvegarder et mettre à jour
 }
 
 

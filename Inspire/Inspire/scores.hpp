@@ -29,7 +29,7 @@ public:
     void display_contenu();
     void insertion(string pseudo,int score);
     void changer_taille(int new_taille){taille=new_taille;}
-    void fin_partie(string pseudo,int score,string nom);
+    void fin_partie(string pseudo,int score,string nom_pseudos,string nom_scores);
     string* get_pseudos();
     int* get_scores();
     int get_taille(){return(taille);}

@@ -22,10 +22,11 @@
 void affichage_contenu(string nom);
 
 //Fonctions lecture/ecriture des scores
-void ecriture(string nom,highscores score);
+void ecriture_scores(string nom,highscores score);
+void ecriture_pseudos(string nom,highscores score);
 vector<string> lecture_pseudos(string nom);
 vector<int> lecture_scores(string nom);
-highscores init(string nom);
+highscores init(string nom_scores,string nom_pseudos);
 
 // Fonctions lecture/ecriture des cartes
 void ecriture(string nom_theme,string nom_question,string nom_nb,string nom_rep,vector<carte> question);

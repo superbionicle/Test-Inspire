@@ -22,8 +22,15 @@ using namespace std;
 
 
 int main(){
-    string const nom("scores.txt"); // on récupère le nom du fichier .txt
-    vector<string> tab_pseudo_temp;
+    string const nom_scores("scores.txt"); // on récupère le nom du fichier .txt
+    string const nom_pseudos("pseudos.txt");
+    highscores tab=init(nom_scores, nom_pseudos);
+    tab.display_contenu();
+    tab.fin_partie("Arthur", 100, nom_pseudos, nom_scores);
+    ecriture_pseudos(nom_pseudos, tab);
+    ecriture_scores(nom_scores, tab);
+    
+    /*vector<string> tab_pseudo_temp;
     string pseudo;
     ifstream temp_pseudo(nom.c_str());
     while(temp_pseudo>>pseudo){
@@ -36,7 +43,7 @@ int main(){
     vector<int> temp_2=lecture_scores(nom);
     //
     highscores tab=init(nom);
-    tab.display_contenu();
+    tab.display_contenu();*/
     //tab.display_contenu(); // on vérifie la cohérence avec ce qui a été écrit dans le .txt
     
     /*string const nom("scores.txt"); // on récupère le nom du fichier .txt des scores
