@@ -33,7 +33,9 @@ int main(){
     highscores tab=init(nom_scores, nom_pseudos); // on init notre tableau des highscores
     // soit on récupère les données qui existe déjà
     // soit on crée un fichier vide et on initialise le tableau des scores
-    init_vecteur(nom_theme, nom_question, nom_nb, nom_rep);
+    init_vecteur(nom_theme, nom_question, nom_nb, nom_rep); // on init nos fichiers pour les cartes
+    // soit on récupère les données qui existe déjà
+    // soit on crée les fichiers vides et on écrira dessus
     
     
     clear();
@@ -42,10 +44,11 @@ int main(){
     do{
         cout<<endl<<endl<<endl;
         vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep); // on récupère les infos pour récupérer les cartes
-        vector<string> themes=recup_themes(nom_theme);
-        vector<int> themes_occurences=recup_nb_themes(nom_theme, themes);
+        vector<string> themes=recup_themes(nom_theme); // on récupère les différents thèmes
+        vector<int> themes_occurences=recup_nb_themes(nom_theme, themes); // on récupère l'occurence des thèmes
+        // ces fonctions sont placées ici pour être mise à jour à chaque saisie d'une nouvelle carte
         //clear();
-        affichage();
+        affichage(); // on affiche notre menu
         cout<<"Votre choix : ";
         cin>>choix_menu;
         
@@ -55,7 +58,7 @@ int main(){
         }
         else if(cin.fail()){
             cerr<<"Mauvaise saisie"<<endl;
-            choix_menu=-1;
+            choix_menu=-1; // permet de feinter l'ordi et de faire boucler jusqu'à la bonne saisie
         }
         vider_buffer();
         // fin de la gestion de la mauvaise saisie
@@ -64,12 +67,12 @@ int main(){
         switch(choix_menu){
             case 1:{ // On lance une ranked
                 clear();
-                ranked(tab,liste_cartes,nom_pseudos,nom_scores);
+                ranked(tab,liste_cartes,nom_pseudos,nom_scores); // on lance une partie scorée
             }
                 break;
             case 2:{ // On s'entraine sur les questions
                 clear();
-                training(themes, themes_occurences, liste_cartes);
+                training(themes, themes_occurences, liste_cartes); // on lance le mode entrainement selon un thème
             }
                 break;
             case 3:{ // On ajoute des cartes
@@ -80,7 +83,7 @@ int main(){
                     cin>>nb_ajout;
                     getline(cin,tampon);
                 }while(nb_ajout<0);
-                ajout_carte(nb_ajout,nom_theme, nom_question, nom_nb, nom_rep);
+                ajout_carte(nb_ajout,nom_theme, nom_question, nom_nb, nom_rep); // on ajoute n cartes
             }
                 break;
             case 4:{ // On affiche les highscores

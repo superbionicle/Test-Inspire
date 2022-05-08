@@ -7,5 +7,5 @@
     - une question
     - 1 réponse correcte et entre 1 et 3 réponses fausses 
  Etapes :
-    - gérer la casse lors de la saisie (vérifier le type de la variable qui est saisie) 
+    - faire un shuffle des réponses pour ne pas toujours avoir la 1e réponse comme la bonne
 */

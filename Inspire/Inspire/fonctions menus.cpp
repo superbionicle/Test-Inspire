@@ -29,28 +29,25 @@ void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb
     vector<carte> ensemble_temp;
     string tampon;
     for(int i=0;i<nb_ajout;i++){
+        clear();
         carte carte_temp;
         cout<<endl<<endl<<endl;
         cout<<"Ajouter une carte"<<endl;
         cout<<"Quel thème pour la carte : ";
         string theme;
-        //cin>>theme;
-        getline(cin,theme);
-        //getline(cin,tampon);
-        carte_temp.set_theme(theme);
-        carte_temp.set_question();
-        carte_temp.set_reponses();
+        getline(cin,theme); // on stocke le theme de la question
+        carte_temp.set_theme(theme); // on définit le theme
+        carte_temp.set_question(); // on définit la question
+        carte_temp.set_reponses(); // on définit les réponses
         ensemble_temp.push_back(carte_temp);
-        //cout<<ensemble_temp[ensemble_temp.size()].display();
-        //clear();
         cout<<endl<<endl<<endl<<endl<<endl;
     }
     for(int i=0;i<ensemble_temp.size();i++){
         cout<<"Contenu ajouté : "<<endl;
-        ensemble_temp[i].display();
+        ensemble_temp[i].display(); // on affiche ce qu'on a ajouté au deck de cartes
         cout<<endl;
     }
-    ecriture(nom_theme,nom_question, nom_nb, nom_rep, ensemble_temp);
+    ecriture(nom_theme,nom_question, nom_nb, nom_rep, ensemble_temp); // on enregistre les nouvelles cartes dans les .txt
 }
 
 void training(vector<string> themes,vector<int> themes_occurences,vector<carte> liste_cartes){
@@ -58,28 +55,28 @@ void training(vector<string> themes,vector<int> themes_occurences,vector<carte> 
     string tampon;
     affichage_themes(themes, themes_occurences);
     cout<<"Quel thème voulez vous choisir ? : ";
-    //cin>>theme_train;
     getline(cin,theme_train);
-    //getline(cin,tampon);
-    vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes);
+    vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes); // on récupère toutes les cartes du thème
     cout<<endl;
     int points=0;
     for(int i=0;i<cartes_theme.size();i++){
-        //cartes_theme[i].display();
+        clear();
         bool training=cartes_theme[i].poser_question();
         if(training){
             points++;
         }
         cout<<endl;
     }
+    // on affiche les scores en fonction de ce qu'on a obtenu en terme de bonnes réponses
+    // tout en rappelant le nombre total de questions du thème
     if(points==1){
-        cout<<"Vous avez répondu correctement à "<<points<<" question."<<endl;
+        cout<<"Vous avez répondu correctement à "<<points<<" question sur "<<cartes_theme.size()<<"."<<endl;
     }
     else if (points==0){
         cout<<"Vous n'avez répondu correctement à aucune question."<<endl;
     }
     else{
-        cout<<"Vous avez répondu correctement à "<<points<<" questions."<<endl;
+        cout<<"Vous avez répondu correctement à "<<points<<" questions sur "<<cartes_theme.size()<<"."<<endl;
     }
 }
 
@@ -88,9 +85,7 @@ void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string 
     string tampon;
     int score=0;
     cout<<"Entrez votre pseudo : ";
-    //cin>>pseudo;
     getline(cin,pseudo);
-    //getline(cin,tampon);
     bool reussite=true;
     int i=0;
     do{
@@ -124,7 +119,7 @@ void init_vecteur(string nom_theme,string nom_question,string nom_nb,string nom_
     lecture_rep.close();
 }
 
-void vider_buffer(){
+void vider_buffer(){ // permet de nettoyer le buffer quand on foire une saisie au cin
     cin.clear();
     cin.seekg(0,ios::end);
     if(!cin.fail()){

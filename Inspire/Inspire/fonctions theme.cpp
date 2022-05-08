@@ -12,6 +12,7 @@
 
 // Importation des headers
 #include "fonctions theme.hpp"
+#include "fonctions menus.hpp"
 
 using namespace std;
 
@@ -22,7 +23,7 @@ vector<string> recup_themes(string nom_theme){
     if(lecture_theme){
         string line;
         while(getline(lecture_theme,line)){
-            theme_temp.push_back(line);
+            theme_temp.push_back(line); // on récupère les thèmes de toutes les cartes
         }
     }
     else{
@@ -30,14 +31,14 @@ vector<string> recup_themes(string nom_theme){
     }
     vector<string> liste_themes; // on crée notre vector des thèmes sans doublons
     for(int i=0;i<theme_temp.size();i++){ // on parcourt tous les thèmes récupérés
-        bool deja=false;
-        for(int j=0;j<liste_themes.size();j++){
+        bool deja=false; // on part du principe que le thème n'a pas été vu encore
+        for(int j=0;j<liste_themes.size();j++){ // on parcout toutes les cartes et leurs thèmes
             if(theme_temp[i]==liste_themes[j]){
-                deja=true;
+                deja=true; // si on croise le thème, alors on ne le prendra pas
             }
         }
         if(!deja){
-            liste_themes.push_back(theme_temp[i]);
+            liste_themes.push_back(theme_temp[i]); // si on l'a pas croisé, on l'ajoute à la liste de thèmes dispo
         }
     }
     return (liste_themes);
@@ -50,7 +51,7 @@ vector<int> recup_nb_themes(string nom_theme,vector<string> liste_themes){
     if(lecture_theme){
         string line;
         while(getline(lecture_theme,line)){
-            theme_temp.push_back(line);
+            theme_temp.push_back(line); // on récupère tous les thèmes des cartes
         }
     }
     else{
@@ -61,7 +62,7 @@ vector<int> recup_nb_themes(string nom_theme,vector<string> liste_themes){
         int occurence=1; // on commence à au moins une fois le thème existant
         for(int j=0;j<theme_temp.size();j++){
             if(liste_themes[i]==theme_temp[j]){
-                occurence++;
+                occurence++; // on compte le nombre de fois où l'on rencontre le thème
             }
         }
         nb_theme_temp.push_back(occurence);
@@ -79,18 +80,20 @@ vector<carte> revision(string nom_theme,vector<string> nom_themes,vector<carte> 
     vector<carte> ensemble_cartes;
     bool existe=false;
     for(int i=0;i<nom_theme.size();i++){
-        if(nom_theme==nom_themes[i]){
+        if(nom_theme==nom_themes[i]){ // on regarde si le thème saisi existe ou non
             existe=true;
         }
     }
     if(existe){
+        clear();
         cout<<"Le thème que vous avez choisi existe parmi les cartes existantes"<<endl;
         for(int i=0;i<cartes.size();i++){
             if(cartes[i].get_theme()==nom_theme){
-                ensemble_cartes.push_back(cartes[i]);
+                ensemble_cartes.push_back(cartes[i]); // on récupère l'ensemble des cartes du thème
             }
         }
     }else{
+        clear();
         cout<<"Le thème que vous avez choisi n'existe pas parmi les cartes existantes"<<endl;
     }
     return(ensemble_cartes);

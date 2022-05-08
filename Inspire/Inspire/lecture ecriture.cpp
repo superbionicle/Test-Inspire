@@ -39,6 +39,14 @@ void affichage_contenu(string nom){
 
 
 
+
+
+
+
+
+
+
+
 // Fonctions écriture/lecture scores
 
 
@@ -246,7 +254,7 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     if(lecture_theme){
         string line;
         while(getline(lecture_theme,line)){
-            nb_theme.push_back(line);
+            nb_theme.push_back(line); // on récupère les themes des questions
         }
     }
     else{
@@ -257,7 +265,7 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     if(lecture_question){
         string line;
         while(getline(lecture_question,line)){
-            questions.push_back(line);
+            questions.push_back(line); // on récupère les questions
         }
     }
     else{
@@ -268,7 +276,7 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     if(lecture_nb){
         int line;
         while(lecture_nb>>line){
-            nb_rep.push_back(line);
+            nb_rep.push_back(line); // on récupère les nb de réponses aux questions
         }
     }
     else{
@@ -279,7 +287,7 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     if(lecture_rep){
         string line;
         while(getline(lecture_rep,line)){
-            rep.push_back(line);
+            rep.push_back(line); // on récupère les réponses aux questions
         }
     }
     else{
@@ -288,20 +296,16 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
     
     int cumul_rep=0;
     for(int i=0;i<nb_theme.size();i++){
-        //cout<<"Nombre de réponses : "<<nb_rep[i]<<endl;
-        carte carte_temp;
-        //cumul_rep+=nb_rep[i];
-        carte_temp.set_theme(nb_theme[i]);
-        carte_temp.set_question(questions[i]);
-        vector<string> rep_temp;
-        for(int j=0;j<nb_rep[i];j++){
-            //cout<<"Entrée"<<endl;
-            rep_temp.push_back(rep[i+j+cumul_rep]);
-            //cout<<rep[i+j+cumul_rep]<<endl;
+        carte carte_temp; // on crée une carte temp qu'on ajoutera à notre vector de cartes
+        carte_temp.set_theme(nb_theme[i]); // on définit son thème
+        carte_temp.set_question(questions[i]); // on définit sa question
+        vector<string> rep_temp; // on crée son vector de réponses
+        for(int j=0;j<nb_rep[i];j++){ // on veut récupérer les bonnes réponses uniquement
+            rep_temp.push_back(rep[i+j+cumul_rep]); // le cumul des réponses permet de savoir quelles réponses on a besoin
         }
-        cumul_rep+=nb_rep[i]-1;
-        carte_temp.set_reponses(nb_rep[i],rep_temp);
-        cartes_temp.push_back(carte_temp);
+        cumul_rep+=nb_rep[i]-1; // on incrémente le nb de réponses qui ont été utilisées
+        carte_temp.set_reponses(nb_rep[i],rep_temp); // on définit ses réponses
+        cartes_temp.push_back(carte_temp); // on ajoute finalement la carte aux autres
     }
     
     lecture_theme.close(); // fermeture du fichier
