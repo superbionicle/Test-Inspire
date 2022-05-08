@@ -48,7 +48,19 @@ int main(){
         affichage();
         cout<<"Votre choix : ";
         cin>>choix_menu;
-        getline(cin,tampon);
+        
+        // permet de gérer la mauvaise saisie d'un utilisateur
+        if(cin.eof() || cin.bad()){
+            cerr<<"Erreur interne"<<endl;
+        }
+        else if(cin.fail()){
+            cerr<<"Mauvaise saisie"<<endl;
+            choix_menu=-1;
+        }
+        vider_buffer();
+        // fin de la gestion de la mauvaise saisie
+        
+        getline(cin,tampon); // permet de gérer les pb de saisie avec cin, utilisation d'un tampon pour absorber le "\n"
         switch(choix_menu){
             case 1:{ // On lance une ranked
                 clear();

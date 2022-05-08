@@ -24,5 +24,6 @@ void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb
 void training(vector<string> themes,vector<int> themes_occurences,vector<carte> liste_cartes);
 void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string nom_scores);
 void init_vecteur(string nom_theme,string nom_question,string nom_nb,string nom_rep);
+void vider_buffer();
 
 #endif /* fonctions_menus_hpp */

@@ -60,7 +60,7 @@ void training(vector<string> themes,vector<int> themes_occurences,vector<carte> 
     cout<<"Quel thème voulez vous choisir ? : ";
     //cin>>theme_train;
     getline(cin,theme_train);
-    getline(cin,tampon);
+    //getline(cin,tampon);
     vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes);
     cout<<endl;
     int points=0;
@@ -90,7 +90,7 @@ void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string 
     cout<<"Entrez votre pseudo : ";
     //cin>>pseudo;
     getline(cin,pseudo);
-    getline(cin,tampon);
+    //getline(cin,tampon);
     bool reussite=true;
     int i=0;
     do{
@@ -122,4 +122,15 @@ void init_vecteur(string nom_theme,string nom_question,string nom_nb,string nom_
     
     ofstream lecture_rep(nom_rep.c_str(),ios::app);
     lecture_rep.close();
+}
+
+void vider_buffer(){
+    cin.clear();
+    cin.seekg(0,ios::end);
+    if(!cin.fail()){
+        cin.ignore(numeric_limits<streamsize>::max());
+    }
+    else{
+        cin.clear();
+    }
 }
