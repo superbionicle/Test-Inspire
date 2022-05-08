@@ -33,6 +33,12 @@ void affichage_contenu(string nom){
     lecture.close(); // on ferme le fichier
 }
 
+
+
+
+
+
+
 // Fonctions écriture/lecture scores
 
 void ecriture(string nom,highscores score){ // on sauvegarde les données dans le .txt
@@ -56,8 +62,10 @@ vector<string> lecture_pseudos(string nom){ // on récupère les pseudos du .txt
     vector<string> pseudos_temp; // on crée la variable de retour
     ifstream lecture(nom.c_str()); // on ouvre le fichier en lecture
     if(lecture){ // si l'ouverture s'est bien passée
+        cout<<"Ouverture lecture pseudos ok"<<endl;
         string pseudo_user;
         while(lecture>>pseudo_user){ //on récupère les scores
+            cout<<"Ajout de "<<pseudo_user<<endl;
             pseudos_temp.push_back(pseudo_user);
         }
     }
@@ -72,8 +80,10 @@ vector<int> lecture_scores(string nom){ // on récupère les scores du .txt
     vector<int> scores_temp; // on crée la variable de retour
     ifstream lecture(nom.c_str()); // on ouvre le fichier en lecture
     if(lecture){ // si l'ouverture s'est bien passée
+        cout<<"Ouverture lecture score ok"<<endl;
         int score_user;
         while(lecture>>score_user){ // on récupère les pseudos
+            cout<<"Ajout du score "<<score_user;
             scores_temp.push_back(score_user);
         }
         
@@ -95,7 +105,13 @@ highscores init(string nom){
     }
     open.close(); // on le ferme directement
     vector<string> pseudos=lecture_pseudos(nom); // on récupère les valeurs des pseudos
+    for(int i=0;i<pseudos.size();i++){
+        cout<<"Pseudo n°"<<i+1<<" : "<<pseudos[i]<<endl;
+    }
     vector<int> scores=lecture_scores(nom); // on récupère les valeurs des scores
+    for(int i=0;i<scores.size();i++){
+        cout<<"Score n°"<<i+1<<" : "<<pseudos[i]<<endl;
+    }
     int vide=scores.size(); // on récupère la taille des vecteurs (ils ont meme taille)
     cout<<"scores.size() = "<<vide<<endl;
     if(vide==0){ // si c'est égal à 0, alors le fichier est vide
@@ -110,6 +126,24 @@ highscores init(string nom){
         return(score);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Fonctions lecture/ecriture cartes

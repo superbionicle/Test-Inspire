@@ -23,10 +23,22 @@ using namespace std;
 
 int main(){
     string const nom("scores.txt"); // on récupère le nom du fichier .txt
+    vector<string> tab_pseudo_temp;
+    string pseudo;
+    ifstream temp_pseudo(nom.c_str());
+    while(temp_pseudo>>pseudo){
+        tab_pseudo_temp.push_back(pseudo);
+    }
+    for(int i=0;i<tab_pseudo_temp.size();i++){
+        cout<<"Pseudo : "<<tab_pseudo_temp[i]<<endl;
+    }
+    //vector<string> temp_1=lecture_pseudos(nom);
+    vector<int> temp_2=lecture_scores(nom);
+    //
     highscores tab=init(nom);
-    ecriture(nom, tab);
-    affichage_contenu(nom);
-    tab.display_contenu(); // on vérifie la cohérence avec ce qui a été écrit dans le .txt
+    tab.display_contenu();
+    //tab.display_contenu(); // on vérifie la cohérence avec ce qui a été écrit dans le .txt
+    
     /*string const nom("scores.txt"); // on récupère le nom du fichier .txt des scores
     highscores tab=init(nom); // on initialise le fichier des scores
     // soit on récupère les données qui existe déjà

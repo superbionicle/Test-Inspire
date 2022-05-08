@@ -24,7 +24,7 @@ void affichage_contenu(string nom);
 //Fonctions lecture/ecriture des scores
 void ecriture(string nom,highscores score);
 vector<string> lecture_pseudos(string nom);
-vector<int> lecture_score(string nom);
+vector<int> lecture_scores(string nom);
 highscores init(string nom);
 
 // Fonctions lecture/ecriture des cartes
