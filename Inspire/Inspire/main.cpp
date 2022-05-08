@@ -9,6 +9,9 @@
 #include <fstream>
 #include <vector>
 #include "scores.hpp"
+#include "menus.hpp"
+#include "carte.hpp"
+#include "thème.hpp"
 #include "lecture ecriture.hpp"
 
 using namespace std;
@@ -35,17 +38,17 @@ int main(){
             }
                 break;
             case 2:{
-                int choix_2=menu_training();
+                //int choix_2=menu_training();
                 cout<<"WIP Training"<<endl;
             }
                 break;
             case 3:{
-                int choix_3=menu_theme();
+                //int choix_3=menu_theme();
                 cout<<"WIP Ajout/Retrait thème"<<endl;
             }
                 break;
             case 4:{
-                int choix_4=menu_carte();
+                /*int choix_4=menu_carte();
                 switch (choix_4) {
                     case 1:{
                         carte carte_temp;
@@ -62,7 +65,7 @@ int main(){
                         
                     default:
                         break;
-                }
+                }*/
                 cout<<"WIP Ajout/Modif/Retrait cartes"<<endl;
             }
                 break;
