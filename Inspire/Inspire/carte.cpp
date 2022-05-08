@@ -17,7 +17,7 @@ using namespace std;
 
 void carte::set_question(){
     string question_temp;
-    cout<<"Quel est votre questio ?"<<endl;
+    cout<<"Quel est votre question ?"<<endl;
     cin>>question_temp;
     question=question_temp;
 }
