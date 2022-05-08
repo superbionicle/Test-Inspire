@@ -27,7 +27,7 @@ void affichage_contenu(string nom){
         }
     }
     else{ // s'il y a eu un problème
-        cout<<"Erreur d'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour l'affichage du contenu"<<endl;
     }
     cout<<endl;
     lecture.close(); // on ferme le fichier
@@ -47,7 +47,7 @@ void ecriture(string nom,highscores score){ // on sauvegarde les données dans l
         }
     }
     else{ // s'il y a eu un problème
-        cout<<"Erreur d'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour l'écriture des highscores"<<endl;
     }
     txt.close(); // on ferme le fichier
 }
@@ -62,7 +62,7 @@ vector<string> lecture_pseudos(string nom){ // on récupère les pseudos du .txt
         }
     }
     else{ // s'il y a eu un problème
-        cout<<"Erreur d'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour la lecture des pseudos"<<endl;
     }
     lecture.close(); // on ferme le fichier
     return(pseudos_temp);
@@ -79,7 +79,7 @@ vector<int> lecture_scores(string nom){ // on récupère les scores du .txt
         
     }
     else{ // s'il y a eu un problème
-        cout<<"Erreur d'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour la lecture des scores"<<endl;
     }
     lecture.close(); // on ferme le fichier
     return(scores_temp);
@@ -107,61 +107,61 @@ highscores init(string nom){
 // Fonctions lecture/ecriture cartes
 
 void ecriture(string nom_theme,string nom_question,string nom_nb,string nom_rep,vector<carte> question){
-    ofstream txt_theme(nom_theme.c_str(),ios::app);
+    ofstream txt_theme(nom_theme.c_str(),ios::app); // on écrit en mode append pour ne pas écraser le contenu
     if(txt_theme){ // ecriture des themes des question des cartes
         //cout<<"Ouverture réussie"<<endl;
         for(int i=0;i<question.size();i++){
-            txt_theme<<question[i].get_theme()<<endl;;
+            txt_theme<<question[i].get_theme()<<endl; // on ajoute au fichier .txt
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour l'écriture des thèmes des cartes"<<endl;
     }
-    txt_theme.close();
+    txt_theme.close(); // on ferme le fichier
     
     
-    ofstream txt_questions(nom_question.c_str(),ios::app);
+    ofstream txt_questions(nom_question.c_str(),ios::app); // on écrit en mode append pour ne pas écraser le contenu
     if(txt_questions){ // ecriture des questions des cartes
         //cout<<"Ouverture réussie"<<endl;
         for(int i=0;i<question.size();i++){
-            txt_questions<<question[i].get_question()<<endl;
+            txt_questions<<question[i].get_question()<<endl; // on ajoute au fichier .txt
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour l'écriture des questions des cartes"<<endl;
     }
-    txt_questions.close();
+    txt_questions.close(); // on ferme le fichier
     
     
-    ofstream txt_nb(nom_nb.c_str(),ios::app);
+    ofstream txt_nb(nom_nb.c_str(),ios::app); // on écrit en mode append pour ne pas écraser le contenu
     if(txt_nb){ // ecriture des nb de reponses des questions pour retrouver les reponses après
         //cout<<"Ouverture réussie"<<endl;
         for(int i=0;i<question.size();i++){
-            txt_nb<<question[i].get_nb()<<endl;
+            txt_nb<<question[i].get_nb()<<endl; // on ajoute au fichier .txt
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour l'écriture du nb de réponses aux questions des cartes"<<endl;
     }
-    txt_nb.close();
+    txt_nb.close(); // on ferme le fichier
     
     
-    ofstream txt_rep(nom_rep.c_str(),ios::app);
+    ofstream txt_rep(nom_rep.c_str(),ios::app); // on écrit en mode append pour ne pas écraser le contenu
     if(txt_rep){ // ecriture des nb de reponses des questions pour retrouver les reponses après
         //cout<<"Ouverture réussie"<<endl;
         for(int i=0;i<question.size();i++){
             vector<string> temp=question[i].get_reponses();
             for(int i=0;i<temp.size();i++){
-                txt_rep<<temp[i]<<endl;
+                txt_rep<<temp[i]<<endl; // on ajoute au fichier .txts
             }
             //txt_rep<<endl;
             //txt_rep<<question[i].get_reponses()<<endl;
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour l'écriture des réponses des questions des cartes"<<endl;
     }
-    txt_rep.close();
+    txt_rep.close(); // on ferme le fichier
     
 }
 
@@ -181,9 +181,9 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour la lecture des questions des cartes"<<endl;
     }
-    lecture_theme.close(); // fermeture du fichier
+    
     
     
     ifstream lecture_question(nom_question.c_str()); // reconstruction de l'ensemble des questions
@@ -194,9 +194,9 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour la lecture des questions des cartes"<<endl;
     }
-    lecture_question.close(); // fermeture du fichier
+    
     
     
     ifstream lecture_nb(nom_nb.c_str()); // recontruction de l'ensemble des nb de rep
@@ -207,12 +207,12 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour la lecture du nb de réponses aux questions des cartes"<<endl;
     }
-    lecture_nb.close(); // fermeture du fichier
     
     
-    ifstream lecture_rep(nom_rep.c_str());
+    
+    ifstream lecture_rep(nom_rep.c_str()); // reconstructuon de l'ensemble des réponses
     if(lecture_rep){
         string line;
         while(getline(lecture_rep,line)){
@@ -220,28 +220,37 @@ vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,
         }
     }
     else{
-        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+        cout<<"Erreur lors de l'ouverture du fichier pour la lecture des réponses des questions des cartes"<<endl;
     }
-    lecture_rep.close(); // fermeture du fichier
+    
     int cumul_rep=0;
-    for(int i=0;i<nb_theme.size();i++){
-        //cout<<"Nombre de réponses : "<<nb_rep[i]<<endl;
-        carte carte_temp;
-        //cumul_rep+=nb_rep[i];
-        carte_temp.set_theme(nb_theme[i]);
-        carte_temp.set_question(questions[i]);
-        vector<string> rep_temp;
-        for(int j=0;j<nb_rep[i];j++){
-            //cout<<"Entrée"<<endl;
-            rep_temp.push_back(rep[i+j+cumul_rep]);
-            //cout<<rep[i+j+cumul_rep]<<endl;
+    
+    if( lecture_nb && lecture_rep && lecture_theme && lecture_question){ // si on a reussi à ouvrir les 4 fichiers
+        for(int i=0;i<nb_theme.size();i++){
+            //cout<<"Nombre de réponses : "<<nb_rep[i]<<endl;
+            carte carte_temp;
+            //cumul_rep+=nb_rep[i];
+            carte_temp.set_theme(nb_theme[i]);
+            carte_temp.set_question(questions[i]);
+            vector<string> rep_temp;
+            for(int j=0;j<nb_rep[i];j++){
+                //cout<<"Entrée"<<endl;
+                rep_temp.push_back(rep[i+j+cumul_rep]);
+                //cout<<rep[i+j+cumul_rep]<<endl;
+            }
+            cumul_rep+=nb_rep[i]-1;
+            carte_temp.set_reponses(nb_rep[i],rep_temp);
+            cartes_temp.push_back(carte_temp);
         }
-        cumul_rep+=nb_rep[i]-1;
-        carte_temp.set_reponses(nb_rep[i],rep_temp);
-        cartes_temp.push_back(carte_temp);
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier : Impossible de sauvegarder"<<endl;
     }
     
-    
+    lecture_theme.close(); // fermeture du fichier
+    lecture_question.close(); // fermeture du fichier
+    lecture_nb.close(); // fermeture du fichier
+    lecture_rep.close(); // fermeture du fichier
     // reconstruire les classes mineures pour refaire la classe principale
     return(cartes_temp);
 }

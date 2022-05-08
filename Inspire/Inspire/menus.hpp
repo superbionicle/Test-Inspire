@@ -8,7 +8,9 @@
 #ifndef menus_hpp
 #define menus_hpp
 
-#include <stdio.h>
+// Importation des libraries
+
+// Importation des headers
 
 void affichage();
 int menu_ranked();

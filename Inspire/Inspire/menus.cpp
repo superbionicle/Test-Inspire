@@ -5,8 +5,14 @@
 //  Created by Arthur on 04/05/2022.
 //
 
-#include "menus.hpp"
+
+// Importation des libraries
 #include <iostream>
+
+// Importation des headers
+#include "menus.hpp"
+
+
 using namespace std;
 
 void affichage(){

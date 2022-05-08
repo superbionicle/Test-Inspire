@@ -8,9 +8,14 @@
 #ifndef scores_hpp
 #define scores_hpp
 
+// Importation des libraries
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+
+// Importation des headers
+
+
 using namespace std;
 
 class highscores{
@@ -24,7 +29,7 @@ public:
     void display_contenu();
     void insertion(string pseudo,int score);
     void changer_taille(int new_taille){taille=new_taille;}
-    void fin_partie(string pseudo,int score);
+    void fin_partie(string pseudo,int score,string nom);
     string* get_pseudos();
     int* get_scores();
     int get_taille(){return(taille);}

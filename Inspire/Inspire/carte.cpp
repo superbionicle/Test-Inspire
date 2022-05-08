@@ -5,9 +5,14 @@
 //  Created by Arthur on 04/05/2022.
 //
 
-#include "carte.hpp"
-#include <stdlib.h>
+
+// Importation des libraries
 #include <string.h>
+
+// Importation des headers
+#include "carte.hpp"
+
+
 using namespace std;
 
 void carte::set_question(){

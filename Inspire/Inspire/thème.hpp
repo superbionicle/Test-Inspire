@@ -8,9 +8,14 @@
 #ifndef the_me_hpp
 #define the_me_hpp
 
+
+// Importation des libraries
 #include <stdio.h>
 #include <vector>
+
+// Importation des headers
 #include "carte.hpp"
+
 
 class theme{
     vector<carte> questions;
