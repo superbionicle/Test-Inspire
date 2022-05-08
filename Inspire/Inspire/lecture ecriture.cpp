@@ -5,13 +5,35 @@
 //  Created by Arthur on 07/05/2022.
 //
 
-#include "lecture ecriture.hpp"
+// Importation des libraries
 #include <iostream>
 #include <fstream>
 #include <vector>
+
+// Importation des headers
+#include "lecture ecriture.hpp"
 #include "scores.hpp"
 #include "carte.hpp"
 #include "thème.hpp"
+
+// Fonctions affichages
+
+void affichage_contenu(string nom){
+    ifstream lecture(nom.c_str()); // on ouvre le fichier en lecture
+    if(lecture){ // si l'ouverture s'est bien passée
+        string line;
+        while(getline(lecture,line)){ // on affiche les lignes
+            cout<<line<<endl;
+        }
+    }
+    else{ // s'il y a eu un problème
+        cout<<"Erreur d'ouverture du fichier"<<endl;
+    }
+    cout<<endl;
+    lecture.close(); // on ferme le fichier
+}
+
+// Fonctions écriture/lecture scores
 
 void ecriture(string nom,highscores score){ // on sauvegarde les données dans le .txt
     int* scores=score.get_scores(); // on récupère les scores de notre classe
@@ -63,21 +85,6 @@ vector<int> lecture_scores(string nom){ // on récupère les scores du .txt
     return(scores_temp);
 }
 
-void affichage_contenu(string nom){
-    ifstream lecture(nom.c_str()); // on ouvre le fichier en lecture
-    if(lecture){ // si l'ouverture s'est bien passée
-        string line;
-        while(getline(lecture,line)){ // on affiche les lignes
-            cout<<line<<endl;
-        }
-    }
-    else{ // s'il y a eu un problème
-        cout<<"Erreur d'ouverture du fichier"<<endl;
-    }
-    cout<<endl;
-    lecture.close(); // on ferme le fichier
-}
-
 highscores init(string nom){
     ofstream open(nom.c_str()); // on ouvre une premiere fois le fichier pour le créer éventuellement
     open.close(); // on le ferme directement
@@ -94,4 +101,147 @@ highscores init(string nom){
         highscores score(pseudos,scores,scores.size()); // on attribut des valeurs à la classe de scores
         return(score);
     }
+}
+
+
+// Fonctions lecture/ecriture cartes
+
+void ecriture(string nom_theme,string nom_question,string nom_nb,string nom_rep,vector<carte> question){
+    ofstream txt_theme(nom_theme.c_str(),ios::app);
+    if(txt_theme){ // ecriture des themes des question des cartes
+        //cout<<"Ouverture réussie"<<endl;
+        for(int i=0;i<question.size();i++){
+            txt_theme<<question[i].get_theme()<<endl;;
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    txt_theme.close();
+    
+    
+    ofstream txt_questions(nom_question.c_str(),ios::app);
+    if(txt_questions){ // ecriture des questions des cartes
+        //cout<<"Ouverture réussie"<<endl;
+        for(int i=0;i<question.size();i++){
+            txt_questions<<question[i].get_question()<<endl;
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    txt_questions.close();
+    
+    
+    ofstream txt_nb(nom_nb.c_str(),ios::app);
+    if(txt_nb){ // ecriture des nb de reponses des questions pour retrouver les reponses après
+        //cout<<"Ouverture réussie"<<endl;
+        for(int i=0;i<question.size();i++){
+            txt_nb<<question[i].get_nb()<<endl;
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    txt_nb.close();
+    
+    
+    ofstream txt_rep(nom_rep.c_str(),ios::app);
+    if(txt_rep){ // ecriture des nb de reponses des questions pour retrouver les reponses après
+        //cout<<"Ouverture réussie"<<endl;
+        for(int i=0;i<question.size();i++){
+            vector<string> temp=question[i].get_reponses();
+            for(int i=0;i<temp.size();i++){
+                txt_rep<<temp[i]<<endl;
+            }
+            //txt_rep<<endl;
+            //txt_rep<<question[i].get_reponses()<<endl;
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    txt_rep.close();
+    
+}
+
+vector<carte> lecture_cartes(string nom_theme,string nom_question,string nom_nb,string nom_rep){
+    vector<carte> cartes_temp;
+    
+    vector<string> nb_theme;
+    vector<string> questions;
+    vector<int> nb_rep;
+    vector<string> rep;
+    
+    ifstream lecture_theme(nom_theme.c_str()); // reconstruction de l'ensemble des themes des questions
+    if(lecture_theme){
+        string line;
+        while(getline(lecture_theme,line)){
+            nb_theme.push_back(line);
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    lecture_theme.close(); // fermeture du fichier
+    
+    
+    ifstream lecture_question(nom_question.c_str()); // reconstruction de l'ensemble des questions
+    if(lecture_question){
+        string line;
+        while(getline(lecture_question,line)){
+            questions.push_back(line);
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    lecture_question.close(); // fermeture du fichier
+    
+    
+    ifstream lecture_nb(nom_nb.c_str()); // recontruction de l'ensemble des nb de rep
+    if(lecture_nb){
+        int line;
+        while(lecture_nb>>line){
+            nb_rep.push_back(line);
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    lecture_nb.close(); // fermeture du fichier
+    
+    
+    ifstream lecture_rep(nom_rep.c_str());
+    if(lecture_rep){
+        string line;
+        while(getline(lecture_rep,line)){
+            rep.push_back(line);
+        }
+    }
+    else{
+        cout<<"Erreur lors de l'ouverture du fichier"<<endl;
+    }
+    lecture_rep.close(); // fermeture du fichier
+    int cumul_rep=0;
+    for(int i=0;i<nb_theme.size();i++){
+        //cout<<"Nombre de réponses : "<<nb_rep[i]<<endl;
+        carte carte_temp;
+        //cumul_rep+=nb_rep[i];
+        carte_temp.set_theme(nb_theme[i]);
+        carte_temp.set_question(questions[i]);
+        vector<string> rep_temp;
+        for(int j=0;j<nb_rep[i];j++){
+            //cout<<"Entrée"<<endl;
+            rep_temp.push_back(rep[i+j+cumul_rep]);
+            //cout<<rep[i+j+cumul_rep]<<endl;
+        }
+        cumul_rep+=nb_rep[i]-1;
+        carte_temp.set_reponses(nb_rep[i],rep_temp);
+        cartes_temp.push_back(carte_temp);
+    }
+    
+    
+    // reconstruire les classes mineures pour refaire la classe principale
+    return(cartes_temp);
 }

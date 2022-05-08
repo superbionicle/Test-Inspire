@@ -24,6 +24,32 @@ int main(){
     affichage_contenu(nom);
     tab.display_contenu(); // on vérifie la cohérence avec ce qui a été écrit dans le .txt
     
+    string const nom_theme("themes_question.txt"),nom_question("questions.txt"),nom_nb("nb_rep.txt"),nom_rep("rep.txt");
+        /*ofstream init_theme(nom_theme.c_str());
+        init_theme.close();
+        ofstream init_quest(nom_question.c_str());
+        init_quest.close();
+        ofstream init_nb(nom_nb.c_str());
+        init_nb.close();
+        ofstream init_rep(nom_rep.c_str());
+        init_rep.close();*/
+        
+        /*carte test;
+        test.set_theme("test");
+        test.set_question("Pouet");
+        test.set_reponses();
+        
+        vector<carte> ensemble_test;
+        ensemble_test.push_back(test);
+        
+        ecriture(nom_theme, nom_question, nom_nb, nom_rep, ensemble_test);*/
+        
+        vector<carte> lecture;
+        lecture=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);
+        for(int i=0;i<lecture.size();i++){
+            lecture[i].display();
+        }
+    
     
     vector<carte> liste_cartes;
     vector<theme> liste_theme;
