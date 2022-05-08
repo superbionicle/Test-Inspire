@@ -14,7 +14,6 @@
 #include "scores.hpp"
 #include "menus.hpp"
 #include "carte.hpp"
-#include "thème.hpp"
 #include "lecture ecriture.hpp"
 #include "fonctions menus.hpp"
 #include "fonctions theme.hpp"
@@ -39,6 +38,7 @@ int main(){
     
     int choix_menu=0;
     do{
+        cout<<endl<<endl<<endl;
         vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep); // on récupère les infos pour récupérer les cartes
         vector<string> themes=recup_themes(nom_theme);
         vector<int> themes_occurences=recup_nb_themes(nom_theme, themes);
@@ -49,50 +49,12 @@ int main(){
         switch(choix_menu){
             case 1:{ // On lance une ranked
                 clear();
-                string pseudo;
-                int score=0;
-                cout<<"Entrez votre pseudo : ";
-                cin>>pseudo;
-                //cout<<"Entrez votre score : ";
-                //cin>>score;
-                bool reussite=true;
-                int i=0;
-                do{
-                    reussite=liste_cartes[i].poser_question();
-                    if(reussite){
-                        score++;
-                    }
-                    i++;
-                }while(reussite && i<liste_cartes.size());
-                // Note pour modification : ces trois lignes vont toujours ensemble
-                tab.fin_partie(pseudo, score, nom_pseudos, nom_scores); // on regarde si on bat un des meilleurs scores
-                ecriture_pseudos(nom_pseudos, tab); // on réécrit les pseudos classés
-                ecriture_scores(nom_scores, tab); // on réécrit les scores classés
-                // Si on souhaite rajouter un potentiel nouveau meilleur joueur
-                
-                cout<<endl<<"WIP Ranked"<<endl;
+                ranked(tab,liste_cartes,nom_pseudos,nom_scores);
             }
                 break;
             case 2:{ // On s'entraine sur les questions
                 clear();
-                string theme_train;
-                affichage_themes(themes, themes_occurences);
-                cout<<"Quel thème voulez vous choisir ? : ";
-                cin>>theme_train;
-                vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes);
-                cout<<endl;
-                int points=0;
-                for(int i=0;i<cartes_theme.size();i++){
-                    //cartes_theme[i].display();
-                    bool training=cartes_theme[i].poser_question();
-                    if(training){
-                        points++;
-                    }
-                    cout<<endl;
-                }
-                cout<<"Vous avez répondu à "<<points<<" questions"<<endl;
-                //cout<<endl<<endl;
-                //cout<<"WIP Training"<<endl;
+                training(themes, themes_occurences, liste_cartes);
             }
                 break;
             case 3:{ // On ajoute des cartes
@@ -111,6 +73,7 @@ int main(){
             }
                 break;
             case 0:{ // On quitte le programme
+                clear();
                 cout<<"Merci et à bientot sur Inspire_Learn_Fast.exe"<<endl;
             }
                 break;

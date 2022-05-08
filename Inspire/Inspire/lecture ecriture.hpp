@@ -16,7 +16,6 @@
 // Importation des headers
 #include "scores.hpp"
 #include "carte.hpp"
-#include "thème.hpp"
 
 // Fonctions affichage
 void affichage_contenu(string nom);

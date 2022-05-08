@@ -14,7 +14,7 @@
 #include "lecture ecriture.hpp"
 #include "scores.hpp"
 #include "carte.hpp"
-#include "thème.hpp"
+
 
 // Fonctions affichages
 

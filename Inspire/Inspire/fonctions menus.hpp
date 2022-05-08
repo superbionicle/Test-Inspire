@@ -11,13 +11,17 @@
 
 // Importation des libraries
 #include <iostream>
+#include <vector>
 
 // Importation des headers
+#include "scores.hpp"
+#include "carte.hpp"
 
 using namespace std;
 
-
-void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb,string nom_rep);
 void clear();
+void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb,string nom_rep);
+void training(vector<string> themes,vector<int> themes_occurences,vector<carte> liste_cartes);
+void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string nom_scores);
 
 #endif /* fonctions_menus_hpp */
