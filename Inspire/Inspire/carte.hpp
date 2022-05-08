@@ -45,6 +45,9 @@ public:
     // Méthode d'affichage
     void display();
     void display_rep();
+    
+    // Méthode de jeu
+    bool poser_question();
 };
 
 #endif /* carte_hpp */

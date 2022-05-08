@@ -13,11 +13,5 @@
 // Importation des headers
 
 void affichage();
-int menu_ranked();
-int menu_training();
-int menu_theme();
-int menu_carte();
     
-
-
 #endif /* menus_hpp */

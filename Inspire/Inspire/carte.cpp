@@ -71,3 +71,22 @@ void carte::display_rep(){
         cout<<"Reponse "<<i+1<<" : "<<reponses[i]<<endl;
     }
 }
+
+bool carte::poser_question(){
+    bool reussite=false;
+    cout<<question<<endl;
+    int reponse=0;
+    do{
+        display_rep();
+        cout<<"Entrez le numéro de la réponse qui vous semble correcte : ";
+        cin>>reponse;
+    }while(reponse<-1 && reponse>reponses.size());
+    if(reponse==1){
+        cout<<"Bonne réponse"<<endl;
+        reussite=true;
+    }
+    else{
+        cout<<"Mauvaise réponse"<<endl;
+    }
+    return(reussite);
+}

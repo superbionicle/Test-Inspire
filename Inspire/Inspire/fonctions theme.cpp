@@ -71,7 +71,7 @@ vector<int> recup_nb_themes(string nom_theme,vector<string> liste_themes){
 
 void affichage_themes(vector<string> liste_themes,vector<int> occurence_themes){
     for(int i=0;i<liste_themes.size();i++){
-        cout<<"Thème : "<<liste_themes[i]<<" ... Nombres de cartes de ce thème : "<<occurence_themes[i]<<endl;
+        cout<<"Thème : "<<liste_themes[i]<<" ... Nombres de cartes de ce thème : "<<occurence_themes[i]-1<<endl;
     }
 }
 
