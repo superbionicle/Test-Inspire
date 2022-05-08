@@ -24,6 +24,7 @@ using namespace std;
 
 
 int main(){
+    string tampon;
     // Zone initialisation des fichiers
     string const nom_scores("scores.txt"); // on récupère le nom du fichier .txt pour les scores
     string const nom_pseudos("pseudos.txt"); // on récupère le nom du fichier .txt pour les pseudos du highscores
@@ -46,6 +47,7 @@ int main(){
         affichage();
         cout<<"Votre choix : ";
         cin>>choix_menu;
+        getline(cin,tampon);
         switch(choix_menu){
             case 1:{ // On lance une ranked
                 clear();
@@ -63,6 +65,7 @@ int main(){
                 do{
                     cout<<"Combien de cartes voulez vous ajouter ? : ";
                     cin>>nb_ajout;
+                    getline(cin,tampon);
                 }while(nb_ajout<0);
                 ajout_carte(nb_ajout,nom_theme, nom_question, nom_nb, nom_rep);
             }

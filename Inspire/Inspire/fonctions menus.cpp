@@ -26,6 +26,7 @@ void clear(){
 
 void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb,string nom_rep){
     vector<carte> ensemble_temp;
+    string tampon;
     for(int i=0;i<nb_ajout;i++){
         carte carte_temp;
         cout<<endl<<endl<<endl;
@@ -34,6 +35,7 @@ void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb
         string theme;
         //cin>>theme;
         getline(cin,theme);
+        //getline(cin,tampon);
         carte_temp.set_theme(theme);
         carte_temp.set_question();
         carte_temp.set_reponses();
@@ -52,10 +54,12 @@ void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb
 
 void training(vector<string> themes,vector<int> themes_occurences,vector<carte> liste_cartes){
     string theme_train;
+    string tampon;
     affichage_themes(themes, themes_occurences);
     cout<<"Quel thème voulez vous choisir ? : ";
     //cin>>theme_train;
     getline(cin,theme_train);
+    getline(cin,tampon);
     vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes);
     cout<<endl;
     int points=0;
@@ -80,10 +84,12 @@ void training(vector<string> themes,vector<int> themes_occurences,vector<carte> 
 
 void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string nom_scores){
     string pseudo;
+    string tampon;
     int score=0;
     cout<<"Entrez votre pseudo : ";
     //cin>>pseudo;
     getline(cin,pseudo);
+    getline(cin,tampon);
     bool reussite=true;
     int i=0;
     do{

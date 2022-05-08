@@ -24,22 +24,26 @@ void carte::set_question(){
 }
 
 void carte::set_reponses(){
+    string tampon;
     cout<<"Rappel de la question : "<<question<<endl;
     int nb_erreurs=1;
     string reponse_correcte;
     cout<<"Saisissez la bonne réponse à votre question :"<<endl;
     //cin>>reponse_correcte; // L'user entre d'abord la bonne réponse
     getline(cin,reponse_correcte);
+    //getline(cin,tampon);
     reponses.push_back(reponse_correcte); // On ajoute la bonne réponse à la liste des réponses possibles
     do{
         cout<<"Combien de mauvaises réponses voulez vous (entre 1 et 3) : ";
         cin>>nb_erreurs; // On demande combien de mauvaises réponses l'user souhaite-il (entre 1 et 3)
+        getline(cin,tampon);
     }while(nb_erreurs<1 || nb_erreurs>3); // On boucle tant qu'on a pas la bonne réponse
     for(int i=0;i<nb_erreurs;i++){ // Pour le nombre souhaité, on lui fait rentrer les mauvaises réponses
         string erreur;
         cout<<"Saisissez une mauvaise réponse à votre question : "<<endl;
         //cin>>erreur; // L'user entre une mauvaise réponse
         getline(cin,erreur);
+        //getline(cin,tampon);
         reponses.push_back(erreur); // On ajoute la mauvaise réponse à la liste des réponses possibles
     }
     cout<<"Fin de l'édition de la question et de ses réponses"<<endl;
@@ -77,12 +81,14 @@ void carte::display_rep(){
 
 bool carte::poser_question(){
     bool reussite=false;
+    string tampon;
     cout<<question<<endl;
     int reponse=0;
     do{
         display_rep();
         cout<<"Entrez le numéro de la réponse qui vous semble correcte : ";
         cin>>reponse;
+        getline(cin,tampon);
     }while(reponse<-1 && reponse>reponses.size());
     if(reponse==1){
         cout<<"Bonne réponse"<<endl;
