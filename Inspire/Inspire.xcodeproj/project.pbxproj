@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E2724DB2827F00900BF09F4 /* fonctions menus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E2724D92827F00900BF09F4 /* fonctions menus.cpp */; };
+		8E2724DF2827F67F00BF09F4 /* fonctions theme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E2724DD2827F67F00BF09F4 /* fonctions theme.cpp */; };
 		8E7C89FF28230AD60064A6AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C89FE28230AD60064A6AD /* main.cpp */; };
 		8E7C8A08282314260064A6AD /* carte.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A06282314260064A6AD /* carte.cpp */; };
 		8E7C8A0C282314300064A6AD /* thème.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E7C8A0A282314300064A6AD /* thème.cpp */; };
@@ -32,6 +33,8 @@
 /* Begin PBXFileReference section */
 		8E2724D92827F00900BF09F4 /* fonctions menus.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "fonctions menus.cpp"; sourceTree = "<group>"; };
 		8E2724DA2827F00900BF09F4 /* fonctions menus.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "fonctions menus.hpp"; sourceTree = "<group>"; };
+		8E2724DD2827F67F00BF09F4 /* fonctions theme.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "fonctions theme.cpp"; sourceTree = "<group>"; };
+		8E2724DE2827F67F00BF09F4 /* fonctions theme.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = "fonctions theme.hpp"; sourceTree = "<group>"; };
 		8E7C89FB28230AD60064A6AD /* Inspire */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Inspire; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7C89FE28230AD60064A6AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8E7C8A06282314260064A6AD /* carte.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = carte.cpp; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				8E2724DA2827F00900BF09F4 /* fonctions menus.hpp */,
 				8E9D5B502826B00E00DD5083 /* lecture ecriture.cpp */,
 				8E9D5B512826B00E00DD5083 /* lecture ecriture.hpp */,
+				8E2724DD2827F67F00BF09F4 /* fonctions theme.cpp */,
+				8E2724DE2827F67F00BF09F4 /* fonctions theme.hpp */,
 				8E9D5B4A2826943F00DD5083 /* scores.cpp */,
 				8E9D5B4B2826943F00DD5083 /* scores.hpp */,
 				8E9D5B552826BE1000DD5083 /* objectifs.cpp */,
@@ -156,6 +161,7 @@
 				8E7C8A0C282314300064A6AD /* thème.cpp in Sources */,
 				8E9D5B562826BE1000DD5083 /* objectifs.cpp in Sources */,
 				8E7C8A10282323F00064A6AD /* menus.cpp in Sources */,
+				8E2724DF2827F67F00BF09F4 /* fonctions theme.cpp in Sources */,
 				8E9D5B522826B00E00DD5083 /* lecture ecriture.cpp in Sources */,
 				8E7C8A08282314260064A6AD /* carte.cpp in Sources */,
 				8E2724DB2827F00900BF09F4 /* fonctions menus.cpp in Sources */,

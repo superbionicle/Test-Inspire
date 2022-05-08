@@ -17,6 +17,7 @@
 #include "thème.hpp"
 #include "lecture ecriture.hpp"
 #include "fonctions menus.hpp"
+#include "fonctions theme.hpp"
 
 
 using namespace std;
@@ -35,10 +36,14 @@ int main(){
     vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep);
     // on récupère les infos pour récupérer les cartes
     
+    vector<string> themes=recup_themes(nom_theme);
+    vector<int> themes_occurences=recup_nb_themes(nom_theme, themes);
+    
     clear();
     
     int choix_menu=0;
     do{
+        clear();
         affichage();
         cout<<"Votre choix : ";
         cin>>choix_menu;
@@ -63,6 +68,15 @@ int main(){
                 break;
             case 2:{
                 clear();
+                string theme_train;
+                affichage_themes(themes, themes_occurences);
+                cout<<"Quel thème voulez vous choisir ? : ";
+                cin>>theme_train;
+                vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes);
+                cout<<endl;
+                for(int i=0;i<cartes_theme.size();i++){
+                    cartes_theme[i].display();
+                }
                 cout<<"WIP Training"<<endl;
             }
                 break;

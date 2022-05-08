@@ -7,22 +7,10 @@
     - une question
     - 1 réponse correcte et entre 1 et 3 réponses fausses
  Ce qu'il faut faire :
-    - créer un programme controlable via le terminal
-        V1 : controlable avec l'écriture
-        V2 : controlable avec le clavier (flèches directionnelles et echap en plus pour quitter)
     - permettre de créer un thème pouvant regrouper plusieurs cartes
     - faire une session de révision par thème (sans score en jeu)
     - faire une session de jeu avec tous les thèmes et avec score en jeu
-    - permettre de rajouter des cartes d'apprentissage dans un fichier
-        écriture et lecture d'un fichier
-        format pour le faire ?
     - permettre de compter les points pour chaque manche gagner, les afficher au fur et à mesure de la partie
-    - faire un menu des high scores
-        écriture et lecture d'un fichier des scores
-        format : txt ? (classement ... nom ...... score)
- 
- Remarque : trouver le moyen de clear la console terminal pour avoir un affichage propre à chaque fois qu'on se balade dans les menus
- Bonus : essayer de mettre en place un chrono en arrière plan et donner le temps à la fin d'une session de jeu
  
  Conception de la structure :
  Menu :
