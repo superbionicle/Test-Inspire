@@ -80,7 +80,8 @@ vector<string> lecture_pseudos(string nom){ // on récupère les pseudos du .txt
     if(lecture){ // si l'ouverture s'est bien passée
         cout<<"Ouverture lecture pseudos ok"<<endl;
         string pseudo_user;
-        while(lecture>>pseudo_user){ //on récupère les scores
+        //while(lecture>>pseudo_user){ //on récupère les pseudos
+        while(getline(lecture,pseudo_user)){
             //cout<<"Ajout de "<<pseudo_user<<endl;
             pseudos_temp.push_back(pseudo_user);
         }

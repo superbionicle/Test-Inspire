@@ -18,7 +18,8 @@ using namespace std;
 void carte::set_question(){
     string question_temp;
     cout<<"Quel est votre question ?"<<endl;
-    cin>>question_temp;
+    //cin>>question_temp;
+    getline(cin,question_temp);
     question=question_temp;
 }
 
@@ -27,7 +28,8 @@ void carte::set_reponses(){
     int nb_erreurs=1;
     string reponse_correcte;
     cout<<"Saisissez la bonne réponse à votre question :"<<endl;
-    cin>>reponse_correcte; // L'user entre d'abord la bonne réponse
+    //cin>>reponse_correcte; // L'user entre d'abord la bonne réponse
+    getline(cin,reponse_correcte);
     reponses.push_back(reponse_correcte); // On ajoute la bonne réponse à la liste des réponses possibles
     do{
         cout<<"Combien de mauvaises réponses voulez vous (entre 1 et 3) : ";
@@ -36,7 +38,8 @@ void carte::set_reponses(){
     for(int i=0;i<nb_erreurs;i++){ // Pour le nombre souhaité, on lui fait rentrer les mauvaises réponses
         string erreur;
         cout<<"Saisissez une mauvaise réponse à votre question : "<<endl;
-        cin>>erreur; // L'user entre une mauvaise réponse
+        //cin>>erreur; // L'user entre une mauvaise réponse
+        getline(cin,erreur);
         reponses.push_back(erreur); // On ajoute la mauvaise réponse à la liste des réponses possibles
     }
     cout<<"Fin de l'édition de la question et de ses réponses"<<endl;

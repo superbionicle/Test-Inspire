@@ -32,13 +32,15 @@ void ajout_carte(int nb_ajout,string nom_theme,string nom_question,string nom_nb
         cout<<"Ajouter une carte"<<endl;
         cout<<"Quel thème pour la carte : ";
         string theme;
-        cin>>theme;
+        //cin>>theme;
+        getline(cin,theme);
         carte_temp.set_theme(theme);
         carte_temp.set_question();
         carte_temp.set_reponses();
         ensemble_temp.push_back(carte_temp);
         //cout<<ensemble_temp[ensemble_temp.size()].display();
-        clear();
+        //clear();
+        cout<<endl<<endl<<endl<<endl<<endl;
     }
     for(int i=0;i<ensemble_temp.size();i++){
         cout<<"Contenu ajouté : "<<endl;
@@ -52,7 +54,8 @@ void training(vector<string> themes,vector<int> themes_occurences,vector<carte> 
     string theme_train;
     affichage_themes(themes, themes_occurences);
     cout<<"Quel thème voulez vous choisir ? : ";
-    cin>>theme_train;
+    //cin>>theme_train;
+    getline(cin,theme_train);
     vector<carte> cartes_theme=revision(theme_train, themes, liste_cartes);
     cout<<endl;
     int points=0;
@@ -79,7 +82,8 @@ void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string 
     string pseudo;
     int score=0;
     cout<<"Entrez votre pseudo : ";
-    cin>>pseudo;
+    //cin>>pseudo;
+    getline(cin,pseudo);
     bool reussite=true;
     int i=0;
     do{
