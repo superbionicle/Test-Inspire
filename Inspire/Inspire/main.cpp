@@ -33,6 +33,7 @@ int main(){
     highscores tab=init(nom_scores, nom_pseudos); // on init notre tableau des highscores
     // soit on récupère les données qui existe déjà
     // soit on crée un fichier vide et on initialise le tableau des scores
+    init_vecteur(nom_theme, nom_question, nom_nb, nom_rep);
     
     
     clear();

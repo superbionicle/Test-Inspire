@@ -9,6 +9,7 @@
 
 // Importation des libraries
 #include <iostream>
+#include <fstream>
 #include <vector>
 
 // Importation des headers
@@ -107,4 +108,18 @@ void ranked(highscores tab,vector<carte> liste_cartes,string nom_pseudos,string 
     ecriture_pseudos(nom_pseudos, tab); // on réécrit les pseudos classés
     ecriture_scores(nom_scores, tab); // on réécrit les scores classés
     // Si on souhaite rajouter un potentiel nouveau meilleur joueur
+}
+
+void init_vecteur(string nom_theme,string nom_question,string nom_nb,string nom_rep){
+    ofstream lecture_theme(nom_theme.c_str(),ios::app);
+    lecture_theme.close();
+    
+    ofstream lecture_questions(nom_question.c_str(),ios::app);
+    lecture_questions.close();
+    
+    ofstream lecture_nb(nom_nb.c_str(),ios::app);
+    lecture_nb.close();
+    
+    ofstream lecture_rep(nom_rep.c_str(),ios::app);
+    lecture_rep.close();
 }
