@@ -8,6 +8,9 @@
 
 // Importation des libraries
 #include <string.h>
+//#include <ctime>
+#include <random>
+#include <algorithm>
 
 // Importation des headers
 #include "carte.hpp"
@@ -92,6 +95,11 @@ bool carte::poser_question(){ // on pose la question de notre carte
     cout<<question<<endl; // on affiche notre question
     int reponse=0;
     int nb_rep=reponses.size(); // on récupère le nb de rép (évite un probleme dans le do-while)
+    
+    
+    // Méthode de shuffle pour mélanger les questions
+    
+    
     do{
         display_rep();
         cout<<"Entrez le numéro de la réponse qui vous semble correcte ";

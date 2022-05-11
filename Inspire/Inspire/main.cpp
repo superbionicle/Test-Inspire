@@ -30,24 +30,22 @@ int main(){
     string const nom_pseudos("pseudos.txt"); // on récupère le nom du fichier .txt pour les pseudos du highscores
     string const nom_theme("themes_question.txt"),nom_question("questions.txt"),nom_nb("nb_rep.txt"),nom_rep("rep.txt");
     
-    highscores tab=init(nom_scores, nom_pseudos); // on init notre tableau des highscores
-    // soit on récupère les données qui existe déjà
-    // soit on crée un fichier vide et on initialise le tableau des scores
-    init_vecteur(nom_theme, nom_question, nom_nb, nom_rep); // on init nos fichiers pour les cartes
-    // soit on récupère les données qui existe déjà
-    // soit on crée les fichiers vides et on écrira dessus
-    
-    
-    clear();
-    
     int choix_menu=0;
     do{
-        cout<<endl<<endl<<endl;
+        highscores tab=init(nom_scores, nom_pseudos); // on init notre tableau des highscores
+        // soit on récupère les données qui existe déjà
+        // soit on crée un fichier vide et on initialise le tableau des scores
+        init_vecteur(nom_theme, nom_question, nom_nb, nom_rep); // on init nos fichiers pour les cartes
+        // soit on récupère les données qui existe déjà
+        // soit on crée les fichiers vides et on écrira dessus
         vector<carte> liste_cartes=lecture_cartes(nom_theme,nom_question,nom_nb,nom_rep); // on récupère les infos pour récupérer les cartes
         vector<string> themes=recup_themes(nom_theme); // on récupère les différents thèmes
         vector<int> themes_occurences=recup_nb_themes(nom_theme, themes); // on récupère l'occurence des thèmes
-        // ces fonctions sont placées ici pour être mise à jour à chaque saisie d'une nouvelle carte
+        // ces fonctions sont placées ici pour être mise à jour à chaque saisie d'une nouvelle carte ou d'une maj des scores
         //clear();
+        
+        clear();
+
         affichage(); // on affiche notre menu
         cout<<"Votre choix : ";
         cin>>choix_menu;
@@ -66,13 +64,25 @@ int main(){
         getline(cin,tampon); // permet de gérer les pb de saisie avec cin, utilisation d'un tampon pour absorber le "\n"
         switch(choix_menu){
             case 1:{ // On lance une ranked
-                clear();
-                ranked(tab,liste_cartes,nom_pseudos,nom_scores); // on lance une partie scorée
+                if(liste_cartes.size()==0){ // on regarde s'il y a des cartes
+                    clear();
+                    cout<<"Il n'y a pas de cartes, veuillez en enregistrer ou changer les fichiers .txt"<<endl;
+                }
+                else{
+                    clear();
+                    ranked(tab,liste_cartes,nom_pseudos,nom_scores); // on lance une partie scorée
+                }
             }
                 break;
             case 2:{ // On s'entraine sur les questions
-                clear();
-                training(themes, themes_occurences, liste_cartes); // on lance le mode entrainement selon un thème
+                if(liste_cartes.size()==0){ // on regarde s'il y a des cartes
+                    clear();
+                    cout<<"Il n'y a pas de cartes, veuillez en enregistrer ou changer les fichiers .txt"<<endl;
+                }
+                else{
+                    clear();
+                    training(themes, themes_occurences, liste_cartes); // on lance le mode entrainement selon un thème
+                }
             }
                 break;
             case 3:{ // On ajoute des cartes
